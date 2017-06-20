@@ -5,7 +5,8 @@
     <h6>Дата публикации: {{ article.article_date }}</h6>
     <h4><a href="/article/get/{{ article.id }}"> {{ article.article_title }}</a></h4>
     <p>{{ article.article_text }}</p>
-    <p>Понравилось: {{ article.article_like }}</p>
+    {%  load static %}
+    <p><img src="{% static "like-icon.png" %}" width="25px" height="25px">: {{ article.article_like }}</p>
     <hr>
 {%  endfor %}
 {% endblock %}
