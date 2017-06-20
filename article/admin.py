@@ -1,9 +1,9 @@
 from django.contrib import admin
-from article.models import Article, Coments
+from article.models import Article, Comments
 # Register your models here.
 
 class ArticleInline(admin.StackedInline):
-    model = Coments
+    model = Comments
     extra = 2
 
 class ArticleAdmin(admin.ModelAdmin):

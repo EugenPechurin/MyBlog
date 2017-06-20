@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -15,9 +16,10 @@ class Article(models.Model):
     def __str__(self):
         return str(self.article_title)
 
-class Coments(models.Model):
-    class Meta():
+
+class Comments(models.Model):
+    class Meta:
         db_table = 'comments'
 
-    coments_text = models.TextField()
-    coments_article = models.ForeignKey(Article)
+    comments_text = models.TextField()
+    comments_article = models.ForeignKey(Article)
