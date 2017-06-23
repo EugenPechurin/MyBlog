@@ -3,10 +3,33 @@
 {% block article %}
 {% for article in articles %}
     <h6>Дата публикации: {{ article.article_date }}</h6>
-    <h4><a href="/article/get/{{ article.id }}"> {{ article.article_title }}</a></h4>
+    <h4><a href="/article/get/{{ article.id }}/1/"> {{ article.article_title }}</a></h4>
     <p>{{ article.article_text }}</p>
     {%  load static %}
-    <p><img src="{% static "like-icon.png" %}" width="25px" height="25px">: {{ article.article_like }}</p>
+    <p><a href="/article/addlike/{{ article.id }}/{{ articles.number }}/"> <img src="{% static "like-icon.png" %}" width="25px" height="25px">: {{ article.article_like }}</a></p>
     <hr>
 {%  endfor %}
+    <div class="row">
+        <div class="large-3 large-offset-5 columns">
+            <ul class="pagination text-center">
+                {% if articles.has_previous %}
+                    <li class="pagination-previous"><a href="/page/{{ articles.previous_page_number }}/"></a></li>
+                {% else %}
+                    <li class="pagination-previous disabled"></li>
+                {% endif %}
+                {% for page in articles.paginator.page_range %}
+                    {% if page == articles.number %}
+                        <li class="current">{{ page }}</li>
+                    {% else %}
+                        <li><a href="/page/{{ page }}/">{{ page }}</a> </li>
+                    {% endif %}
+                {% endfor %}
+                {% if articles.has_next %}
+                    <li class="pagination-next"><a href="/page/{{ articles.next_page_number }}/"></a> </li>
+                {% else %}
+                    <li class="pagination-next disabled"></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

@@ -21,6 +21,9 @@ urlpatterns = [
     url(r'^1/', views.basic_one),
     url(r'^2/', views.template_two),
     url(r'^3/', views.template_three),
+    url(r'^article/get/(?P<article_id>\d+)/(?P<page_number>\d+)/$', views.article),
+    url(r'^article/addlike/(?P<article_id>\d+)/(?P<page_number>\d+)/$', views.addlike),
+    url(r'^article/addcomment/(?P<article_id>\d+)/(?P<page_number>\d+)/$', views.addcomment),
+    url(r'^page/(\d+)/$', views.articles),
     url(r'^$', views.articles),
-    url(r'^article/get/(?P<article_id>\d+)/$', views.article),
 ]

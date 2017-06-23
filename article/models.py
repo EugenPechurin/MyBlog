@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -21,5 +22,7 @@ class Comments(models.Model):
     class Meta:
         db_table = 'comments'
 
-    comments_text = models.TextField()
+    comments_date = models.DateTimeField(auto_now=True)
+    comments_text = models.TextField(verbose_name="Текст коментария")
     comments_article = models.ForeignKey(Article)
+    comments_from = models.ForeignKey(User)
